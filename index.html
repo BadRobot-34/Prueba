@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Reproductor</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background-color: black;
+      overflow: hidden;
+    }
+
+    .wrapper {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    /* Capa invisible que bloquea el primer clic de la publicidad */
+    .ad-shield {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 9999;
+      background: rgba(0, 0, 0, 0);
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrapper">
+    <!-- Capa de protección activa -->
+    <div class="ad-shield" onclick="removeShield(this)"></div>
+    
+    <!-- Iframe sin la etiqueta sandbox para engañar al script anti-sandbox -->
+    <iframe 
+      src="https://embed.st/embed/admin/admin-espn/3" 
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <script>
+    function removeShield(element) {
+      // Al hacer clic, la capa se elimina y permite controlar el reproductor
+      element.remove();
+    }
+  </script>
+
+</body>
+</html
